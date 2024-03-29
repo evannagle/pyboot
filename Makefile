@@ -113,7 +113,7 @@ rename: assume clean
 changelog:
 # Generate the changelog for the project.
 	$(call title, "Generating changelog")
-	$(BIN_FOR_NPX) auto-changelog -p -o CHANGELOG.md --hide-credit --release-summary --hide-empty-releases --sort-commits date-desc && git add CHANGELOG.md
+	$(BIN_FOR_POETRY) run towncrier
 
 globalize:
 # Globalize the project.

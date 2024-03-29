@@ -1,17 +1,17 @@
 # Pyboot
 
-This is a simple python application template for python projects.
+This is a simple Python application template for Python projects designed to streamline your development workflow.
 
 Features include:
 
-- Dependency management with [Poetry]()
-- Code formatting with [Black]()
-- Linting with [Ruff]()
-- Unit Testing with [PyTest]()
-- Changelog management with []()
-- Automation script management with Node and/or Python
-- Pre- and post-commit sanity checks with Husky
-- Documentation creation with [mkdoc]
+- Dependency management with Poetry: https://python-poetry.org/: Poetry provides a powerful way to manage project dependencies, creating isolated environments and handling version conflicts.
+- Code formatting with Black: https://black.readthedocs.io/en/stable/: Black enforces consistent, opinionated code formatting, enhancing readability and collaboration.
+- Linting with Ruff: [invalid URL removed]: Ruff helps find potential bugs, stylistic issues, and maintain a clean codebase.
+  Unit testing with Pytest: https://docs.pytest.org/en/latest/: Pytest provides a flexible and popular framework for writing and running tests that ensure your code's correctness.
+- Changelog management with towncrier: https://towncrier.readthedocs.io/en/latest/: Maintain well-structured changelogs to track project changes.
+- Automation script management with Node and/or Python: Streamline common tasks (e.g., building, testing, deploying) with customizable scripts.
+- Pre- and post-commit sanity checks with Husky: https://typicode.github.io/husky/: Enforce quality standards at commit time to catch issues early.
+- Documentation creation with MkDocs: https://www.mkdocs.org/: Easily create beautiful technical documentation for your project.
 
 ## Setup
 
@@ -44,6 +44,7 @@ make app
 Which should output:
 
 ```bash
+
 🤖 Cleaning up
 rm -rf __pycache__ .pytest_cache .coverage .mypy_cache .tox .eggs .venv
 
@@ -74,7 +75,7 @@ make coverage
 
 7. Globalize the command for use from your command line
 
-```
+```bash
 make globalize
 
 happy-bog
