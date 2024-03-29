@@ -3,6 +3,7 @@ BIN_FOR_APP 				= 	$(APP_NAME)/app.py
 BIN_FOR_NODE				= 	node
 BIN_FOR_NPM					= 	npm
 BIN_FOR_NPX 				= 	npx
+BIN_FOR_PIP					= 	pip
 BIN_FOR_PYTHON				= 	python3
 BIN_FOR_POETRY				= 	poetry
 PATHS_THAT_ARE_EPHEMERAL 	= 	__pycache__ .pytest_cache .coverage .mypy_cache .tox .eggs .venv
@@ -90,7 +91,7 @@ lint: format
 lint-fix: format
 # Run the linter and fix the issues
 	$(call title, Running the linter and fixing the issues)
-	$(BIN_FOR_POETRY) run ruff check $(APP_NAME) --fix
+	$(BIN_FOR_POETRY) run ruff check $(APP_NAME) --fix --no-cache
 	
 pre-commit: lint-fix test
 # Run the pre-commit checks
@@ -109,7 +110,8 @@ changelog:
 globalize:
 # Globalize the project.
 	$(call title, "Globalizing the project")
-	$(BIN_FOR_NODE) $(PATH_TO_SCRIPTS)/globalize.js
+	$(BIN_FOR_POETRY) env use $(BIN_FOR_PYTHON)
+	$(BIN_FOR_PIP) install --editable .
 
 env:
 # Move `.env-example` to `.env`.
