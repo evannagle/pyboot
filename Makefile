@@ -92,6 +92,10 @@ lint-fix: format
 	$(call title, Running the linter and fixing the issues)
 	$(BIN_FOR_POETRY) run ruff check $(APP_NAME) --fix
 	
+pre-commit: lint-fix test
+# Run the pre-commit checks
+	$(call title, Running the pre-commit checks)
+
 rename: assume clean
 # Rename the project.
 	$(call title, "Renaming the project")
