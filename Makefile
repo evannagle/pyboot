@@ -27,6 +27,14 @@ huh: assume
 # Print the command, followed by the comments below it, like this one!
 	@$(BIN_FOR_NODE) $(PATH_TO_SCRIPTS)/makefile-parser.js --format=list
 
+install:
+# Install the project dependencies
+	$(call title, Installing the project dependencies)
+	$(BIN_FOR_NPM) install
+	$(BIN_FOR_POETRY) install
+	$(BIN_FOR_NPX) husky init
+	echo "make pre-commit" > .husky/pre-commit
+
 clean:
 # Remove all the ephemeral files
 	$(call title, Cleaning up)
