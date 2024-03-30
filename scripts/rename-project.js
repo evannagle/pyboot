@@ -18,16 +18,20 @@ async function walk(dir, oldName, newName) {
 
     for await (const file of await fs.readdir(dir)) {
         const pathToFile = path.join(dir, file);
-
         const isDirectory = (await fs.stat(pathToFile)).isDirectory();
+
         if (isDirectory && ignoreFolders.includes(file)) continue;
 
+        // Recurse into subdirectories first 
         if (isDirectory) {
-            await walk(pathToFile, oldName, newName);
-        } else {
-            await maybeChangeFileContents(pathToFile, oldName, newName);
-            await maybeRenameFile(pathToFile, oldName, newName);
+            await walk(pathToFile, oldName, newName); // Recursion
         }
+
+        // Rename and content changes on the way back up
+        if (!isDirectory) {
+            await maybeChangeFileContents(pathToFile, oldName, newName);
+        }
+        await maybeRenameFile(pathToFile, oldName, newName);
     }
 }
 
