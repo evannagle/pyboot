@@ -118,7 +118,9 @@ changelog:
 globalize:
 # Globalize the project.
 	$(call title, "Globalizing the project")
+	$(BIN_FOR_POETRY) env remove --all
 	$(BIN_FOR_POETRY) env use $(BIN_FOR_PYTHON)
+	$(BIN_FOR_POETRY) install
 	$(BIN_FOR_PIP) install --editable .
 
 env:
