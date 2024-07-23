@@ -127,3 +127,10 @@ env:
 # Move `.env-example` to `.env`.
 	$(call title, "Moving .env-example to .env")
 	cp .env-example .env
+
+bare:
+# Remove tests and calculator
+	$(call title, "Removing tests and calculator")
+	rm tests/calculator_test.py
+	rm $(APP_NAME)/calculator.py
+	echo "" > $(APP_NAME)/app.py
